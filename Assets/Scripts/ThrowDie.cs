@@ -1,21 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThrowDie : MonoBehaviour
 {
     #region Variabls
+    [Header("PowerSettings")]
+    [Space(5)]
+    [Tooltip("The max force the die can be thrown")]
     [SerializeField]
-    float MaxForce;
+    float maxForce;
+    [Tooltip("The min force the die can be thrown")]
     [SerializeField]
-    float maxHoldTime;
+    float  minForce;
+    [Tooltip("The rate of change the mouse position effects the power")]
     [SerializeField]
-    int force;
-    Rigidbody die;
+    float rateOfPowerChange;
+    [Tooltip("The force of the throw")]
+    [SerializeField]  
+    float force;
+    [Tooltip("Have we thrown")]
     [SerializeField]
     bool fired;
-    [SerializeField]float turnSpeed, aimXClamp, aimYClamp;
+
+    
+    [Header("AimingSettings")]
+    [Space(5)]
+    [Tooltip("How far you can aim horizontaly to oneside")]
+    [SerializeField]float aimYClamp;
+    [Tooltip("How far you can aim vertcaly to oneside")]
+    [SerializeField] float aimXClamp;
+    [Tooltip("The rate of change the input aixs effects the power")]
+    [SerializeField] float turnSpeed;
+    
+
     Vector3 rotation;
+    bool calcingPower=false;
+    Rigidbody die;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -34,7 +58,7 @@ public class ThrowDie : MonoBehaviour
             wipePrediction();
             CameraManager.Instance.SwitchToCamera("chase");
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !fired)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !fired)
         {
             CameraManager.Instance.SwitchToCamera("topDown");
         }
@@ -44,6 +68,7 @@ public class ThrowDie : MonoBehaviour
             rotation = transform.eulerAngles;
         } 
         aim();
+        Power();
     }
      void Launch()
     {
@@ -74,6 +99,39 @@ public class ThrowDie : MonoBehaviour
 
         }
     }
+    void Power()
+    {
+        if (Input.GetMouseButtonDown(0) && !fired && !calcingPower)
+        {
+            calcingPower = true;
+            StartCoroutine("PowerCal");
+        }
+    }
+    private IEnumerator PowerCal()
+    {
+        float pos = Input.mousePosition.y;
+        while (!Input.GetMouseButtonUp(0))
+        {
+
+            if (pos > Input.mousePosition.y)
+            {
+                force -= rateOfPowerChange;
+                force = Mathf.Clamp(force, minForce, maxForce);
+                predict();
+            }
+            else if (pos < Input.mousePosition.y)
+            {
+                force += rateOfPowerChange;
+                force = Mathf.Clamp(force, minForce, maxForce);
+                predict();
+            }
+            pos = Input.mousePosition.y;
+            yield return null;
+        }
+        calcingPower = false;
+    }
+
+    #region Predictions
     void predict()
     {
         TrajectorySim.Instance.Predict(die.gameObject, transform.position, transform.forward * force);
@@ -82,8 +140,5 @@ public class ThrowDie : MonoBehaviour
     {
         transform.GetComponent<LineRenderer>().positionCount = 0;
     }
-
-    #region Variabls
-
     #endregion
 }
