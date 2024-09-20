@@ -19,6 +19,7 @@ public class TrajectorySim : MonoBehaviourSingleton<TrajectorySim>
 
     LineRenderer lineRenderer;
     GameObject ghost;
+    bool hitRigidbody = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,10 @@ public class TrajectorySim : MonoBehaviourSingleton<TrajectorySim>
             currentPhysicsScene.Simulate(Time.fixedDeltaTime);
         }
     }
-
+    public Scene GetCurrentScene()
+    {
+        return currentScene;
+    }
 
     public void CopyAllObj()
     {
@@ -61,6 +65,7 @@ public class TrajectorySim : MonoBehaviourSingleton<TrajectorySim>
                     ghostR.enabled = false;
                 }
                 SceneManager.MoveGameObjectToScene(ghostT,predictionScene);
+                ghostT.gameObject.GetComponent<ghostObj>().ghost = true;
                 ghostObjs.Add(ghostT);  
             }
         }
@@ -95,10 +100,20 @@ public class TrajectorySim : MonoBehaviourSingleton<TrajectorySim>
             {
                 predictionPhysicsScene.Simulate(Time.fixedDeltaTime);
                 lineRenderer.SetPosition(i, ghost.transform.position);
+                if (hitRigidbody)
+                {
+                    hitRigidbody=false;
+                    lineRenderer.positionCount = i;
+                    break;
+                }
             }
 
             Destroy(ghost);
         }
+    }
+    public void Hit()
+    {
+        hitRigidbody = true;
     }
 
     void OnDestroy()
