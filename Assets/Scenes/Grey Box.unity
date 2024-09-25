@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chip (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 17300603100903731, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
+      propertyPath: m_TagString
+      value: Chip
+      objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.59
@@ -637,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480759171888660947, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1492,6 +1496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chip (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 17300603100903731, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
+      propertyPath: m_TagString
+      value: Chip
+      objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.04
@@ -1534,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480759171888660947, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1799,11 +1807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995572433174556690, guid: da23c7449a670864798d73e94cba1ba8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6570003
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 1995572433174556690, guid: da23c7449a670864798d73e94cba1ba8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.8
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 1995572433174556690, guid: da23c7449a670864798d73e94cba1ba8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2847,13 +2855,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: chip (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 17300603100903731, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
+      propertyPath: m_TagString
+      value: Chip
+      objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.37
       objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.581984
+      value: 12.61
       objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2887,18 +2899,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 480759171888660947, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 920232716040593415, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 920232716040593415, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2915,6 +2915,10 @@ PrefabInstance:
     - target: {fileID: 17300603100903731, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_Name
       value: chip
+      objectReference: {fileID: 0}
+    - target: {fileID: 17300603100903731, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
+      propertyPath: m_TagString
+      value: Chip
       objectReference: {fileID: 0}
     - target: {fileID: 138310305761671257, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2957,6 +2961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480759171888660947, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753193816862901069, guid: ba2da11e81bd2b84596506c39897be2b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
