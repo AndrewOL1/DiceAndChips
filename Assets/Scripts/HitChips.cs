@@ -9,7 +9,7 @@ public class HitChips : MonoBehaviour
     {
         if(other.gameObject.tag == "Dice")
         {
-            ScoreManager.scoreCount +=1;
+            //ScoreManager.scoreCount +=1;
         }
     }
 

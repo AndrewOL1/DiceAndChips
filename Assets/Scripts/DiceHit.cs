@@ -5,9 +5,11 @@ using UnityEngine;
 public class DiceHit : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField]public ScoreManager scoreManager;
+    [SerializeField]public int score;
     void Start()
     {
-        
+        scoreManager=transform.Find("Canvas").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -17,9 +19,9 @@ public class DiceHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Chip")
+        if(other.gameObject.tag == "Chip" && !other.gameObject.GetComponent<ghostObj>().ghost)
         {
-            ScoreManager.scoreCount +=1;
+            scoreManager.updateScore(score);
         }
     }
 
