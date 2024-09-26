@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 public class CameraManager : MonoBehaviourSingleton<CameraManager> 
 {
     #region variables
+    [Header("CameraManagerSettings")]
+    [Space(5)]
+    [Tooltip("List of Cameras.Order Aim TopDown Chase")]
     [SerializeField]List<CinemachineVirtualCamera> vCameras = new List<CinemachineVirtualCamera>();
     private CinemachineVirtualCamera currentCam;
 

@@ -8,24 +8,24 @@ using UnityEngine;
 public class ThrowDie : MonoBehaviour
 {
     #region Variabls
-    [Header("PowerSettings")]
-    [Space(5)]
-    [Tooltip("The max force the die can be thrown")]
-    [SerializeField]
-    float maxForce;
-    [Tooltip("The min force the die can be thrown")]
-    [SerializeField]
-    float  minForce;
-    [Tooltip("The rate of change the mouse position effects the power")]
-    [SerializeField]
-    float rateOfPowerChange;
-    [Tooltip("The force of the throw")]
-    [SerializeField]  
-    float force;
-    [Tooltip("Have we thrown")]
-    [SerializeField]
-    bool fired;
-
+        [Header("PowerSettings")]
+        [Space(5)]
+        [Tooltip("The max force the die can be thrown")]
+        [SerializeField]
+        float maxForce;
+        [Tooltip("The min force the die can be thrown")]
+        [SerializeField]
+        float minForce;
+        [Tooltip("The rate of change the mouse position effects the power")]
+        [SerializeField]
+        float rateOfPowerChange;
+        [Tooltip("The force of the throw")]
+        [SerializeField]
+        float force;
+        [Tooltip("Have we thrown")]
+        [SerializeField]
+        bool fired;
+    
     
     [Header("AimingSettings")]
     [Space(5)]
