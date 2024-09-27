@@ -5,13 +5,17 @@ using UnityEngine;
 public class DiceParticle : MonoBehaviour
 {
     ParticleSystem part;
+    public bool ghost;
     private void Start()
     {
-        part=GetComponent<ParticleSystem>();
+        if (!ghost)
+        {
+            part = GetComponent<ParticleSystem>();
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag!="Felt") {
+        if (collision.gameObject.tag!="Felt" && !collision.gameObject.GetComponent<ghostObj>().ghost) {
             part.Play();
         }
     }

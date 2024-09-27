@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -94,6 +95,7 @@ public class TrajectorySim : MonoBehaviourSingleton<TrajectorySim>
             ghost.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
             lineRenderer.positionCount = 0;
             lineRenderer.positionCount = maxIterations;
+            //UnityEngine.Debug.Break();
 
 
             for (int i = 0; i < maxIterations; i++)

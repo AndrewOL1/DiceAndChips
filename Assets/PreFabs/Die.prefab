@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8104244784050411555}
   - component: {fileID: 8790341528578767239}
   - component: {fileID: 6395070919456370924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57631cd2140cf3447abbceb96bc4cb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
+  score: 0
 --- !u!114 &8104244784050411555
 MonoBehaviour:
   m_ObjectHideFlags: 0
