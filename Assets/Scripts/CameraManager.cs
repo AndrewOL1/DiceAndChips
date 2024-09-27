@@ -30,17 +30,20 @@ public class CameraManager : MonoBehaviourSingleton<CameraManager>
     }
     private void ChangeCam(CinemachineVirtualCamera camera)
     {
-        if (camera == null || camera !=currentCam)
-        {
-            if (camera.enabled == false)
-            {
-                camera.enabled = true;
-                currentCam = camera;
-            }
-            else
-            {
-                currentCam.enabled = false;
-            }
-        }
+        currentCam.Priority = 10;
+        camera.Priority = 20;
+        currentCam =camera;
+    }
+    public void AimingCameraOn()
+    {
+        currentCam.Priority = 10;
+        vCameras[0].Priority = 20;
+        currentCam = vCameras[0];
+    }
+    public void AimingCameraOff()
+    {
+        currentCam.Priority = 10;
+        vCameras[2].Priority = 20;
+        currentCam = vCameras[2];
     }
 }

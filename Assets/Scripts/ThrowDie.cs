@@ -40,6 +40,8 @@ public class ThrowDie : MonoBehaviour
     Vector3 rotation;
     bool calcingPower=false;
     Rigidbody die;
+    public bool camraDelay = false;
+    public bool topDown = false;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,22 @@ public class ThrowDie : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && !fired)
         {
-            CameraManager.Instance.SwitchToCamera("topDown");
+            if (!camraDelay)
+            {
+                if (!topDown)
+                {
+                    CameraManager.Instance.SwitchToCamera("topDown");
+                    StartCoroutine("CamDelay");
+                    topDown = true;
+                }
+                else
+                {
+                    CameraManager.Instance.SwitchToCamera("aim");
+                    StartCoroutine("CamDelay");
+                    topDown = false;
+                }
+                camraDelay = true;
+            }
         }
         if(rotation!=transform.eulerAngles && !fired) 
         {
@@ -130,7 +147,11 @@ public class ThrowDie : MonoBehaviour
         }
         calcingPower = false;
     }
-
+    private IEnumerator CamDelay()
+    {
+            yield return new WaitForSeconds(0.2f);
+            camraDelay = false;
+    }
     #region Predictions
     void predict()
     {
@@ -140,5 +161,6 @@ public class ThrowDie : MonoBehaviour
     {
         transform.GetComponent<LineRenderer>().positionCount = 0;
     }
+
     #endregion
 }
