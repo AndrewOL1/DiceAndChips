@@ -9,21 +9,25 @@ public class BystanderNav : MonoBehaviour
     private NavMeshAgent agent;
 
     private Transform p;
-    Vector3 lastPoint = new Vector3 (0,0,0);
-    private Vector3 walkPoint;
+    Vector2 lastPoint = new Vector2 (0,0);
+    private Vector2 walkPoint;
     bool walking=true;
     private GameObject StandingPositions;
-    private List<Vector3> StandingPos= new List<Vector3>();
+    private List<Vector2> StandingPos= new List<Vector2>();
+    private List<StandingPos> occupiedList= new List<StandingPos>();
+    float yV;
 
     private void Awake()
     {
+        yV = transform.position.y;
         agent = GetComponent<NavMeshAgent>();
         StandingPositions = GameObject.Find("StandingPositions");
         foreach(Transform t in StandingPositions.transform)
         {
-            if (!StandingPos.Contains(t.position))
+            if (!StandingPos.Contains(new Vector2(t.position.x,t.position.z)))
             {
-                StandingPos.Add(t.position);
+                StandingPos.Add(new Vector2(t.position.x, t.position.z));
+                occupiedList.Add(t.GetComponent<StandingPos>());
             }
         }
         StartCoroutine("MoveToPoint");
@@ -32,40 +36,36 @@ public class BystanderNav : MonoBehaviour
    
 
 
-    private IEnumerator idle()
+    private IEnumerator idle(int pos)
     {
         Debug.Log("idle");
         yield return new WaitForSeconds(Random.Range(5.0f, 20.0f));
+        occupiedList[pos].occupied = false;
         StartCoroutine("MoveToPoint");
 
     }
     private IEnumerator MoveToPoint()
     {
+        Debug.Log("walking");
         int temp;
-        if (lastPoint == new Vector3(0, 0, 0))
-        {
-            temp = StandingPos.Count - 1;
-            temp = Random.Range(0, temp);
+        int count;
+            count = StandingPos.Count;
+            temp = Random.Range(0, count);
+            while (occupiedList[temp].occupied == true || lastPoint == StandingPos[temp])
+            {
+                temp = Random.Range(0, count);
+            }
             walkPoint = StandingPos[temp];
             lastPoint = StandingPos[temp];
-        }
-        else
-        {
-            temp = StandingPos.Count - 2;
-            temp = Random.Range(0, temp);
-            StandingPos.Remove(lastPoint);
-            walkPoint = StandingPos[temp];
-            lastPoint = StandingPos[temp];
-            StandingPos.Add(lastPoint);
-        }
-        agent.SetDestination(walkPoint);
-        Vector3 distToPoint= transform.position - walkPoint;
+            occupiedList[temp].occupied = true;
+        agent.SetDestination(new Vector3 (walkPoint.x,yV,walkPoint.y));
+        Vector2 distToPoint= new Vector2 (transform.position.x, transform.position.z) - walkPoint;
         while (distToPoint.magnitude > 1f)
         {
-            distToPoint = transform.position - walkPoint;
+            distToPoint = new Vector2(transform.position.x, transform.position.z) - walkPoint;
             yield return null;
         }
-        StartCoroutine("idle");
+        StartCoroutine("idle",temp);
     }
 
 }

@@ -46,6 +46,7 @@ public class ThrowDie : MonoBehaviour
     [SerializeField] GameObject dieObj;
     [SerializeField] int ThrowsAllowed;
     int ThrowsRemaining;
+    Vector3 dieScale;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class ThrowDie : MonoBehaviour
         rotation = transform.eulerAngles;
         diePos=die.transform.position;
         ThrowsRemaining = ThrowsAllowed;
+        dieScale= die.transform.localScale;
     }
 
     // Update is called once per frame
@@ -178,6 +180,7 @@ public class ThrowDie : MonoBehaviour
             die = newDie.GetComponent<Rigidbody>();
             die.useGravity = false;
             fired = false;
+            die.transform.localScale = dieScale;
             CameraManager.Instance.SwitchToCamera("aim");
             CameraManager.Instance.changeTarget(die.transform);
 
