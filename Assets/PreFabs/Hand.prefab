@@ -47,13 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e28d99171800f49905b03c43265cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxForce: 0
-  maxHoldTime: 0
+  maxForce: 0
+  minForce: 0
+  rateOfPowerChange: 0
   force: 40
   fired: 0
-  turnSpeed: 1
-  aimXClamp: 35
   aimYClamp: 45
+  aimXClamp: 35
+  turnSpeed: 1
+  camraDelay: 0
+  topDown: 0
+  dieObj: {fileID: 655416015741958187, guid: 620165c8dcb6b7242b99099c899b032b, type: 3}
 --- !u!114 &8857798461820701803
 MonoBehaviour:
   m_ObjectHideFlags: 0

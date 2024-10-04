@@ -22,7 +22,7 @@ public class DiceHit : MonoBehaviour
         if(other.gameObject.tag == "Chip" && !other.gameObject.GetComponent<ghostObj>().ghost)
         {
             scoreManager.updateScore(score);
+
         }
     }
-
 }

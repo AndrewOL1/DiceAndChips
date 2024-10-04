@@ -42,12 +42,18 @@ public class ThrowDie : MonoBehaviour
     Rigidbody die;
     public bool camraDelay = false;
     public bool topDown = false;
+    private Vector3 diePos;
+    [SerializeField] GameObject dieObj;
+    [SerializeField] int ThrowsAllowed;
+    int ThrowsRemaining;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         die = gameObject.transform.Find("Die").GetComponent<Rigidbody>();
         rotation = transform.eulerAngles;
+        diePos=die.transform.position;
+        ThrowsRemaining = ThrowsAllowed;
     }
 
     // Update is called once per frame
@@ -59,6 +65,17 @@ public class ThrowDie : MonoBehaviour
             fired = true;
             wipePrediction();
             CameraManager.Instance.SwitchToCamera("chase");
+            ThrowsRemaining--;
+
+
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && fired && ThrowsRemaining != 0)
+        {
+            nextShot();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && fired && ThrowsRemaining == 0)
+        {
+            //end Level
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && !fired)
         {
@@ -151,6 +168,19 @@ public class ThrowDie : MonoBehaviour
     {
             yield return new WaitForSeconds(0.2f);
             camraDelay = false;
+    }
+    void nextShot()
+    {
+        if (die.velocity.magnitude < 1)
+        {
+            die.transform.parent = null;
+            GameObject newDie= Instantiate(dieObj, diePos, Quaternion.Euler(rotation));
+            die = newDie.GetComponent<Rigidbody>();
+            fired = false;
+            CameraManager.Instance.SwitchToCamera("aim");
+            CameraManager.Instance.changeTarget(die.transform);
+
+        }
     }
     #region Predictions
     void predict()

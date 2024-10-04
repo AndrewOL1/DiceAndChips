@@ -46,4 +46,10 @@ public class CameraManager : MonoBehaviourSingleton<CameraManager>
         vCameras[2].Priority = 20;
         currentCam = vCameras[2];
     }
+    public void changeTarget(Transform die)
+    {
+        vCameras[0].LookAt = die;
+        vCameras[2].LookAt = die;
+        vCameras[2].Follow = die;
+    }
 }
