@@ -176,6 +176,7 @@ public class ThrowDie : MonoBehaviour
             die.transform.parent = null;
             GameObject newDie= Instantiate(dieObj, diePos, Quaternion.Euler(rotation));
             die = newDie.GetComponent<Rigidbody>();
+            die.useGravity = false;
             fired = false;
             CameraManager.Instance.SwitchToCamera("aim");
             CameraManager.Instance.changeTarget(die.transform);
