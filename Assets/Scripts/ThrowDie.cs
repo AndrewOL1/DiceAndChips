@@ -178,6 +178,7 @@ public class ThrowDie : MonoBehaviour
             die.transform.parent = null;
             GameObject newDie= Instantiate(dieObj, diePos, Quaternion.Euler(rotation));
             die = newDie.GetComponent<Rigidbody>();
+            die.transform.parent = this.transform;
             die.useGravity = false;
             fired = false;
             die.transform.localScale = dieScale;
