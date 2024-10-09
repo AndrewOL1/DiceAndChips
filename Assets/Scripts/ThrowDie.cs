@@ -47,7 +47,7 @@ public class ThrowDie : MonoBehaviour
     [SerializeField] int ThrowsAllowed;
     int ThrowsRemaining;
     Vector3 dieScale;
-    userSettings userSettting;
+    ScoreManager userSetting;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class ThrowDie : MonoBehaviour
         diePos=die.transform.position;
         ThrowsRemaining = ThrowsAllowed;
         dieScale= die.transform.localScale;
-        userSettting=gameObject.transform.Find("Settings").GetComponent<userSettings>();
+        userSetting=GameObject.Find("Canvas").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -80,6 +80,7 @@ public class ThrowDie : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && fired && ThrowsRemaining == 0)
         {
             //userSettings.newScore() need to get the score
+            userSetting.UpdateHighScore();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && !fired)
         {

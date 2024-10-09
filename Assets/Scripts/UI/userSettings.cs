@@ -27,6 +27,7 @@ public class userSettings : MonoBehaviour
             LoadMusicVolume();
             LoadSFXVolume();
             LoadAmbientVolume();
+            loadHignScore();
         }
         else
         {
@@ -95,17 +96,15 @@ public class userSettings : MonoBehaviour
     }
     public void toggleHighScore()
     {
-        if (sliders != null)
+        if (highScore != null)
         {
-            if (sliders.activeSelf == true)
+            if (highScore.activeSelf == true)
             {
-                sliders.SetActive(false);
-                Time.timeScale = 1.0f;
+                highScore.SetActive(false);
             }
             else
             {
-                sliders.SetActive(true);
-                Time.timeScale = 0f;
+                highScore.SetActive(true);
             }
         }
     }
@@ -125,6 +124,7 @@ public class userSettings : MonoBehaviour
         {
             hiscore = i;
             t = true;
+            PlayerPrefs.SetInt(HIGHSCORE, i);
             displayHighScore(t,i);
         }
         else
@@ -137,11 +137,13 @@ public class userSettings : MonoBehaviour
     {
         if (n)
         {
-            highScore.transform.GetChild(0).GetComponent<TextMeshPro>().text=( "New HighScore : "+ hiscore);
+            highScore.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text= "New HighScore : "+ hiscore;
+            highScore.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
         }
         else
         {
-            highScore.transform.GetChild(0).GetComponent<TextMeshPro>().text = ("HighScore : " + hiscore+"\n" +"Your Score : " +i);
+            highScore.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "HighScore : " + hiscore;
+            highScore.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Your Score : " + i;
         }
     }
 

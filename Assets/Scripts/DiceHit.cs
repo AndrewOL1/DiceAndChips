@@ -9,7 +9,7 @@ public class DiceHit : MonoBehaviour
     [SerializeField]public int score;
     void Start()
     {
-        //scoreManager=transform.Find("Canvas").GetComponent<ScoreManager>();
+        scoreManager=GameObject.Find("Canvas").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
