@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.05
-  LowestY: 0.3
-  HighestY: 0.4
+  LowestY: 0.2
+  HighestY: 0.25
