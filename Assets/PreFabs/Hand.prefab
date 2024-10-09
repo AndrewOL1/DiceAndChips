@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.69, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1996538, y: 0.1996538, z: 0.1996538}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4860138778218897427}
@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e28d99171800f49905b03c43265cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 0
-  minForce: 0
-  rateOfPowerChange: 0
-  force: 40
+  maxForce: 8
+  minForce: 2
+  rateOfPowerChange: 0.1
+  force: 5
   fired: 0
   aimYClamp: 45
   aimXClamp: 35
@@ -58,7 +58,7 @@ MonoBehaviour:
   camraDelay: 0
   topDown: 0
   dieObj: {fileID: 655416015741958187, guid: 620165c8dcb6b7242b99099c899b032b, type: 3}
-  ThrowsAllowed: 0
+  ThrowsAllowed: 2
 --- !u!114 &8857798461820701803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.35333252
+        value: 0.21296918
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -133,8 +133,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9999999
-        value: 0
+        time: 0.7724007
+        value: 0.017547607
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -146,7 +146,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -171,7 +171,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -200,6 +200,10 @@ PrefabInstance:
     - target: {fileID: 655416015741958187, guid: 620165c8dcb6b7242b99099c899b032b, type: 3}
       propertyPath: m_TagString
       value: Dice
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397224709277091482, guid: 620165c8dcb6b7242b99099c899b032b, type: 3}
+      propertyPath: score
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6721474308909133397, guid: 620165c8dcb6b7242b99099c899b032b, type: 3}
       propertyPath: m_LocalPosition.x
