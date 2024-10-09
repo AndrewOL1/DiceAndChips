@@ -21,9 +21,9 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
     }
-    public void updateScore(int score)
+    public void updateScore()
     {
-        scoreCount += score;
+        scoreCount++;
         scoreText.text = "Score: " + Mathf.Round(scoreCount);
     }
     public void Reset()

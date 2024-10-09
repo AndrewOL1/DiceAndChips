@@ -6,7 +6,6 @@ public class DiceHit : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]public ScoreManager scoreManager;
-    [SerializeField]public int score;
     void Start()
     {
         scoreManager=GameObject.Find("Canvas").GetComponent<ScoreManager>();
@@ -21,7 +20,7 @@ public class DiceHit : MonoBehaviour
     {
         if(other.gameObject.tag == "Chip" && !other.gameObject.GetComponent<ghostObj>().ghost)
         {
-            scoreManager.updateScore(score);
+            scoreManager.updateScore();
 
         }
     }
